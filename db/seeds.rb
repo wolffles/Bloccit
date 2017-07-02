@@ -18,8 +18,15 @@ require 'random_data'
 
   Post.find_or_create_by(
     title: "This is a unique post") do |post|
-    post.body = "should not have a duplicate."
-  end
+      post.body = "should not have a duplicate."
+    end
+
+  Comment.find_or_create_by(
+      post: (Post.find_by title: "This is a unique post")) do |comment|
+        comment.body = "I'm a comment, I usually trigger weeaboos on the interwebs."
+      end
+
+
 
 
  puts "Seed finished"
