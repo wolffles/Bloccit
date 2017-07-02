@@ -15,6 +15,13 @@ require 'random_data'
    )
  end
 
+
+  Post.find_or_create_by(
+    title: "This is a unique post") do |post|
+    post.body = "should not have a duplicate."
+  end
+
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
