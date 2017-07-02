@@ -9,7 +9,6 @@ source 'https://rubygems.org'
    gem 'rails_12factor'
  end
 
- # #2
  group :development do
    gem 'sqlite3'
    gem 'pry-rails'
