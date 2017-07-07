@@ -7,6 +7,8 @@ get 'about' => 'welcome#about'
 
  get 'faq' => 'welcome/faq'
 
+ get 'posts' => 'welcome/posts'
+
  root 'welcome#index' #could be rewritten as root({to: 'welcome#index'}) root is a method that takes a hash as an argument and is using the "implied hash" syntax.
 
 end
