@@ -3,6 +3,18 @@
  <div class="row">
    <div class="col-md-8">
      <p><%= @post.body %></p>
+
+     <% @post.comments.each do |comm| %>
+      <div class="media">
+        <div class="media-body">
+          <%= comm.body %>
+        </br>
+          <small> submitted <%= time_ago_in_words(comm.created_at) %>
+          </small>
+          </br>
+        </div>
+      </div>
+     <% end %>
    </div>
    <div class="col-md-4">
  <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
