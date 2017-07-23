@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase if email.present? }
+  before_save{ self.name = name.gsub(/(\w+)/, &:capitalize ) if name.present?}
 #validates is a ruby function
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 
