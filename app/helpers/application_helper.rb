@@ -5,4 +5,8 @@ module ApplicationHelper
 
     content_tag :div, capture(&block), class: css_class
   end
+
+  def current_user_mod?
+    current_user && current_user.moderator?
+  end
 end
