@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 254 }
 
   has_secure_password
-  enum role: [:member, :admin]
+  enum role: [:member, :admin, :moderator]
   #in console to easily update between roles use <object>.member! or <object>.admin!
 end
