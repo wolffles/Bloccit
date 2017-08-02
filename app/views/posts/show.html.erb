@@ -23,7 +23,7 @@
      <% end %>
    </div>
    <div class="col-md-4">
-  <% if current_user_mod? %>
+  <% if current_user_able_edit_post?(@post) %>
     <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
   <% end %>
   <% if user_is_authorized_for_post?(@post) %>

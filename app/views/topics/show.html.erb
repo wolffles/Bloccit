@@ -6,7 +6,7 @@
   <% if current_user %>
     <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
   <% end %>
-<% if current_user_mod? %>
+<% if current_user_able_edit_post? %>
    <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
 <%end%>
 <% if user_is_authorized_for_topics? %>
