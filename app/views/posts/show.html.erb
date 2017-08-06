@@ -9,22 +9,18 @@
  <div class="row">
    <div class="col-md-8">
      <p><%= @post.body %></p>
-
-     <% @post.comments.each do |comm| %>
-      <div class="media">
-        <div class="media-body">
-          <%= comm.body %>
-        </br>
-          <small> submitted <%= time_ago_in_words(comm.created_at) %>
-          </small>
-          </br>
-        </div>
-      </div>
-     <% end %>
+     <h3>Comments</h3>
+     <!-- When we use render this way, the method recognizes that we're rendering a collection, and iterates through that collection. For each  comment belonging to @post, the render method searches for the conventionally named partial file (comments/_comment.html.erb) and renders it.  comment is automatically passed to the partial as a local variable. -->
+     <%= render @post.comments %>
    </div>
+   <% if current_user %>
+    <%= render 'comments/form', comment: Comment.new, post: @post %>
+  <% end %>
    <div class="col-md-4">
+  <% if current_user_able_edit_post?(@post) %>
+    <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
+  <% end %>
   <% if user_is_authorized_for_post?(@post) %>
-   <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
    <%= link_to "Delete Post", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
   <% end %>
 

@@ -62,10 +62,12 @@ end
   end
   def authorize_user
     post = Post.find(params[:id])
-    #
-    unless current_user == post.user || current_user.admin?
+    action = params['action']
+    if (action == "new"  || action == "destroy") && !current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       redirect_to [post.topic, post]
+    elsif (action == "update" || action == "create") && (!current_user.admin? || !current_user.moderator?)
+      flash[:alert] = "You must be a moderator or admin to do that."
     end
   end
 end
