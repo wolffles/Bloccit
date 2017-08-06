@@ -17,32 +17,8 @@
  <div class="row">
    <div class="col-md-8">
      <p class="lead"><%= @topic.description %></p>
-     <% @topic.posts.each do |post| %>
-       <div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-             <%= link_to post.title, topic_post_path(@topic, post) %>
-           </h4>
-           <small>
-             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
-             <%= post.comments.count %> Comments
-           </small>
-         </div>
-       </div>
-     <% end %>
-     <% @topic.sponsered_posts.each do |sponsored_post| %>
-       <div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-             <%= link_to sponsored_post.title, topic_sponsered_post_path(@topic, sponsored_post) %> (sponsored)
-           </h4>
-           <small>
-             submitted <%= time_ago_in_words(sponsored_post.created_at) %> ago <br>
-             <%= sponsored_post.comments.count %> Comments
-           </small>
-         </div>
-       </div>
-     <% end %>
+     <%= render @topic.posts %>
+     <%= render @topic.sponsered_posts %>
    </div>
    <div class="col-md-4">
      <% if user_is_authorized_for_topics? %>

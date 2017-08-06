@@ -1,0 +1,11 @@
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to sponsered_post.title, topic_sponsered_post_path(@topic, sponsered_post) %> (sponsered)
+    </h4>
+    <small>
+      submitted <%= time_ago_in_words(sponsered_post.created_at) %> ago <br>
+      <%= sponsered_post.comments.count %> Comments
+    </small>
+  </div>
+</div>
