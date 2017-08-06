@@ -38,14 +38,15 @@ end
  posts = Post.all
  sponsered_posts = SponseredPost.all
 
- 150.times do
+ 100.times do
    Comment.create!(
      user: users.sample,
      post: posts.sample,
      body: RandomData.random_paragraph
    )
    Comment.create!(
-  sponsered_post: sponsered_posts.sample,
+   user: users.sample,
+   sponsered_post: sponsered_posts.sample,
     body: RandomData.random_paragraph
    )
  end
