@@ -32,5 +32,6 @@ end
 
  gem 'bcrypt'
 
- gem 'bootstrap-sass'
- 
+ gem 'bootstrap-sass', '3.3.6'
+
+ gem 'figaro', 1.0
