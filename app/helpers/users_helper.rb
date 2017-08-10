@@ -7,7 +7,7 @@ module UsersHelper
     !(user.comments.empty?) ? (render user.comments) : "#{user.name} has not submitted any comments yet."
   end
 
-  #def has_favorites?(user)
-  #  !(user.favorites.empty?) ? (render user.favorites) : "#{user.name} has not submitted any favorites yet."
-  #end
+  def has_favorites?(user)
+    !(user.favorites.empty?)
+  end
 end

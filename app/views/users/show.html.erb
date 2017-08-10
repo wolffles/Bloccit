@@ -26,4 +26,10 @@
   <%= has_comments?(@user) %>
 
 <h2> Favorited posts </h2>
-  <%= !(@user.favorites.empty?) ? (render @user.favorites) : "#{@user.name} has not submitted any favorites yet." %>
+<% if has_favorites?(@user) %>
+<% @user.favorites.each do |favorite| %>
+  <%= render partial: 'users/favorites', locals: { post: favorite.post, favorite: favorite } %>
+<% end %>
+<% else %>
+<p><%= @user.name %> has not favorited any posts.</p>
+<% end %>

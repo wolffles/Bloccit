@@ -5,11 +5,9 @@
     </h4>
     <small>
       <%= avatar_url = favorite.post.user.avatar_url(28) %>
-      <% if avatar_url %>
         <div class="media-right">
           <% image_tag avatar_url, class: "media-object" %>
         </div>
-      <% end %>
       <div class="media-right">
         <%= pluralize(favorite.post.votes.count, 'vote') %>
         <%= pluralize(favorite.post.comments.count, 'comment') %>
